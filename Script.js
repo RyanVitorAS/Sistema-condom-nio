@@ -26,8 +26,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// rota para o menu
+// rota default
 app.get("/", function (req, res) {
+    res.sendFile(__dirname + "/bem-vindo.html")
+});
+
+// rota para o menu
+app.get("/menu", function (req, res) {
     res.sendFile(__dirname + "/Menu.html")
 });
 
@@ -208,10 +213,96 @@ app.get('/editar/morador/:id_morador', function (req, res) {
             res.send(`
                 <html>
                     <head>
-                        <title> Editar produto </title>
+                        <title> Editar Morador </title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f3eee7;
+                                margin: 0;
+                                padding: 40px;
+                            }
+    
+                            h1 {
+                                text-align: center;
+                                font-size: 28px;
+                            }
+    
+                            h2 {
+                                font-size: 20px;
+                                margin-bottom: 10px;
+                            }
+    
+                            .container {
+                                width: 90%;
+                                background: rgba(255, 255, 255, 0.95);
+                                padding: 70px;
+                                border-radius: 10px;
+                                box-shadow: 0px 0px 10px gray;
+                                color: black;
+                            }
+    
+                            label {
+                                font-weight: bold;
+                            }
+    
+                            input[type="text"] {
+                                padding: 5px;
+                                width: 200px;
+                                margin-right: 10px;
+                            }
+    
+                            .buttons {
+                                display: flex;
+                                gap: 10px;
+                                margin-top: 10px;
+                                margin-bottom: 20px;
+                            }
+    
+                            button {
+                                padding: 6px 12px;
+                                background-color: #eee;
+                                border: 1px solid #aaa;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+    
+                            button:hover {
+                                background-color: #ddd;
+                            }
+    
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 20px;
+                                background-color: white;
+                            }
+    
+                            th {
+                                background-color: #ccc;
+                                padding: 10px;
+                                text-align: left;
+                            }
+    
+                            td {
+                                border: 1px solid #333;
+                                padding: 8px;
+                            }
+    
+                            td:last-child {
+                                text-align: center;
+                            }
+    
+                            .acoes a {
+                                margin: 0 5px;
+                                color: #000;
+                                text-decoration: underline;
+                                cursor: pointer;
+                            }
+                        </style> 
                         </head>
                     <body>
-                        <h1>Editar Morador</h1>
+                        <div class="container">
+                            <h1>Editar Morador</h1>
                         <form action="/editar/${id_morador}" method="POST">
                             <label for="cpf">CPF:</label><br>
                             <input type="text" name="cpf" value="${rows[0].cpf}"><br><br>
@@ -454,9 +545,97 @@ app.post("/registroMorador", function (req, res) {
                     <html>
                         <head>
                             <title> Editar apartamento </title>
+                            <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f3eee7;
+                                margin: 0;
+                                padding: 40px;
+                            }
+    
+                            h1 {
+                                text-align: center;
+                                font-size: 28px;
+                            }
+    
+                            h2 {
+                                font-size: 20px;
+                                margin-bottom: 10px;
+                            }
+    
+                            .container {
+                                width: 90%;
+                                background: rgba(255, 255, 255, 0.95);
+                                padding: 70px;
+                                border-radius: 10px;
+                                box-shadow: 0px 0px 10px gray;
+                                color: black;
+                            }
+    
+                            label {
+                                font-weight: bold;
+                            }
+    
+                            input[type="text"] {
+                                padding: 5px;
+                                width: 200px;
+                                margin-right: 10px;
+                            }
+    
+                            .buttons {
+                                display: flex;
+                                gap: 10px;
+                                margin-top: 10px;
+                                margin-bottom: 20px;
+                            }
+    
+                            button {
+                                padding: 6px 12px;
+                                background-color: #eee;
+                                border: 1px solid #aaa;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+    
+                            button:hover {
+                                background-color: #ddd;
+                            }
+    
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 20px;
+                                background-color: white;
+                            }
+    
+                            th {
+                                background-color: #ccc;
+                                padding: 10px;
+                                text-align: left;
+                            }
+    
+                            td {
+                                border: 1px solid #333;
+                                padding: 8px;
+                            }
+    
+                            td:last-child {
+                                text-align: center;
+                            }
+    
+                            .acoes a {
+                                margin: 0 5px;
+                                color: #000;
+                                text-decoration: underline;
+                                cursor: pointer;
+                            }
+                        </style>
                             </head>
                         <body>
+
+                        <div class="container">
                             <h1>Editar apartamento</h1>
+        
                             <form action="/editar/apartamento/${id_apartamento}"" method="POST">
                                 <label for="numero">descrição:</label><br>
                                 <input type="number" name="numero" value="${rows[0].numero}" required><br><br>
@@ -694,9 +873,96 @@ app.get('/editar/bloco/:id_bloco', function (req, res) {
                 <html>
                     <head>
                         <title> Editar Bloco </title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f3eee7;
+                                margin: 0;
+                                padding: 40px;
+                            }
+    
+                            h1 {
+                                text-align: center;
+                                font-size: 28px;
+                            }
+    
+                            h2 {
+                                font-size: 20px;
+                                margin-bottom: 10px;
+                            }
+    
+                            .container {
+                                width: 90%;
+                                background: rgba(255, 255, 255, 0.95);
+                                padding: 70px;
+                                border-radius: 10px;
+                                box-shadow: 0px 0px 10px gray;
+                                color: black;
+                            }
+    
+                            label {
+                                font-weight: bold;
+                            }
+    
+                            input[type="text"] {
+                                padding: 5px;
+                                width: 200px;
+                                margin-right: 10px;
+                            }
+    
+                            .buttons {
+                                display: flex;
+                                gap: 10px;
+                                margin-top: 10px;
+                                margin-bottom: 20px;
+                            }
+    
+                            button {
+                                padding: 6px 12px;
+                                background-color: #eee;
+                                border: 1px solid #aaa;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+    
+                            button:hover {
+                                background-color: #ddd;
+                            }
+    
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 20px;
+                                background-color: white;
+                            }
+    
+                            th {
+                                background-color: #ccc;
+                                padding: 10px;
+                                text-align: left;
+                            }
+    
+                            td {
+                                border: 1px solid #333;
+                                padding: 8px;
+                            }
+    
+                            td:last-child {
+                                text-align: center;
+                            }
+    
+                            .acoes a {
+                                margin: 0 5px;
+                                color: #000;
+                                text-decoration: underline;
+                                cursor: pointer;
+                            }
+                        </style> 
                         </head>
                     <body>
-                        <h1>Editar bloco</h1>
+
+                             <div class="container">
+                            <h1>Editar Bloco</h1>
                         <form action="/editar/bloco/${id_bloco}"" method="POST">
                             <label for="descricao">descrição:</label><br>
                             <input type="text" name="descricao" value="${rows[0].descricao}" required><br><br>
