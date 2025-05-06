@@ -204,7 +204,7 @@ app.get('/excluir/morador/:id_morador', function (req, res) {
 })
 
 app.get('/editar/morador/:id_morador', function (req, res) {
-    const id_morador = req.params.id_morador; // Obtém o ID do produto a ser editado da URL
+    const id_morador = req.params.id_morador; 
     const select = "SELECT * FROM morador WHERE id_morador = ?";
 
     connection.query(select, [id_morador], function (err, rows) {
