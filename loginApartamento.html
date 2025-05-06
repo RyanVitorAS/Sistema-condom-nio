@@ -64,14 +64,12 @@
 <body>
   <div class="container">
     <h2> Novo Morador </h2>
-    <p>Cadastre um novo integrante na sua grande familia</p>
-    <form id="loginForm" action ="/registroMorador" method="post">
-        <input type="text" id="nome" name="nome" placeholder="Coloque o nome" required>
-        <input type="text" id="cpf" name="cpf" placeholder="Coloque o cpf" required>
-        <input type="tel" id="telefone" name="telefone" placeholder="Coloque o número de telefone" required>
-        <input type="number" id="id_apartamento" name="id_apartamento" placeholder="Coloque o id do apartamento do indivíduo" required>
+    <p>Cadastre um novo bloco para a sua grande familia</p>
+    <form id="loginForm" action ="/registroApartamento" method="post">
+        <input type="number" id="numero" name="numero" placeholder="Coloque ao numero do apartamento" required>
+        <input type="number" id="id_bloco" name="id_bloco" placeholder="Coloque o nome do bloco" required>
 
-        <button type="submit">Adicionar Morador</button>
+        <button type="submit">Adicionar bloco</button>
         <p id="error-message" style="color:red; display:none;">Preencha todos os campos!</p>
     </form>
 </div>
